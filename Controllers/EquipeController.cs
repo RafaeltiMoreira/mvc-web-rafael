@@ -20,9 +20,20 @@ namespace E_JOGOS.Controllers
             return View();
         }
 
-        //public IActionResult Cadastrar(IFormCollection form)
-        //{
+        public IActionResult Cadastrar(IFormCollection form)
+        {
+            //Criar um objeto a partir do frontend (IFormCollection)
+            Equipe nova_equipe = new Equipe();
+            nova_equipe.IdEquipe = int.Parse(form["IdEquipe"]);
+            nova_equipe.Nome = form["Nome"];
+            nova_equipe.Imagem = form["Imagem"];
 
-        //}
+            //Chamado a função
+            equipeModel.Create(nova_equipe);
+
+            ViewBag.Equipes = equipeModel.ReadAll();
+
+            return LocalRedirect("~/Equipe");
+        }
     }
 }

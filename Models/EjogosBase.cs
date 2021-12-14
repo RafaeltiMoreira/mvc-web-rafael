@@ -19,7 +19,7 @@ namespace E_JOGOS.Models
                 Directory.CreateDirectory(folder);
             }
 
-            if (!File.Exists(file))
+            if (!File.Exists(path))
             {
                 File.Create(path);
             }
